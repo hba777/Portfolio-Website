@@ -1,0 +1,754 @@
+/* Define default Dark theme variables */
+:root {
+    --background-color: rgb(32, 34, 35);
+    --navBar-color: rgb(18, 18, 18);
+    --text-color: rgb(255, 255, 255);
+    --light-text-color: rgba(255, 255, 255, 0.7); /* Lighter text for dark theme */
+    --subtitle-color: rgba(255, 255, 255, 0.7);
+    --theme-icon-color: rgb(114, 181, 38);
+    --bg-card-color: hsl(200, 10% , 8%);
+    --box-shadow: rgba(0, 0, 0, 0.1);
+    --border: none;
+    --box-shadow-hover: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Light theme variables */
+.light-theme {
+    --background-color: rgb(249, 244, 244);
+    --navBar-color: rgb(255, 254, 254);
+    --text-color: rgb(0, 0, 0);
+    --light-text-color: rgba(0, 0, 0, 0.7); /* Lighter text for light theme */
+    --subtitle-color: rgb(44, 43, 43);
+    --theme-icon-color: rgb(114, 181, 38);
+    --bg-card-color: rgb(251, 254, 255);
+    --box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 8px 0px; /* More prominent shadow */
+    --border: 2px solid rgb(114, 181, 38);
+    --box-shadow-hover: 0 0 20px rgb(195, 255, 127);
+}
+
+/* Light theme input fields */
+.light-theme input {
+    border: var(--border); /* Add border in light theme */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Nav Bar */
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: var(--navBar-color);
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    z-index: 10; /* Ensure the navbar stays on top of other content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for depth */
+
+}
+
+/* Home Section */
+.home {
+    margin-top: 0px;
+    padding: 200px;
+}
+
+/* Home Content */
+.home-content {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Home Heading */
+.home h1 {
+    color: var(--text-color);
+    text-align: center;
+    margin: auto;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Responsive for tablets */
+@media (max-width: 768px) {
+    .home {
+        padding: 150px 20px;
+    }
+    
+    .home h1 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Responsive for mobile phones */
+@media (max-width: 480px) {
+    .home {
+        padding: 150px 20px;
+    }
+    
+    .home h1 {
+        font-size: 1.4rem;
+    }
+}
+
+
+/* Default Styles */
+.navBar {
+    display: flex;
+    align-items: center;
+    background-color: var(--navBar-color);
+    height: 60px;
+    padding: 10px;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.navBar a {
+    font-size: 18px;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+.navBar a:hover,
+.navBar a.active {
+    color: rgb(114, 181, 38);
+}
+
+/* Hamburger Icon - Hidden on Desktop */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Hidden by default on mobile */
+.navBar-links {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+/* Hide links on mobile */
+.navBar-links.mobile-hidden {
+    display: none;
+    flex-direction: column;
+    width: 100%; /* Full width for mobile */
+    position: absolute;
+    top: 60px; /* Below the navbar */
+    left: 0;
+    background-color: var(--navBar-color);
+    z-index: 99;
+    text-align: center;
+}
+
+/* Display links vertically in mobile view */
+.navBar-links.mobile-visible {
+    display: flex;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .navBar {
+        justify-content: space-between;
+    }
+
+    .navBar-links {
+        display: none; /* Hidden until the hamburger is clicked */
+    }
+
+    .navBar-links a {
+        display: block;
+        margin: 10px 0; /* Space between links */
+    }
+
+}
+
+.navBar button {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    color: var(--theme-icon-color);
+    font-size: 18px;
+    transition: box-shadow 0.3s ease; /* Smooth transition for the glow effect */
+    margin-left: 15px; 
+    border: var(--border);   
+}
+
+.navBar button:hover {
+    box-shadow: var(--box-shadow-hover); /* Adjust the glow color and intensity */
+}
+
+.animated-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 24px;
+    animation: typing 2s steps(12) forwards;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 13ch; /* Adjust the number based on the length of the text */
+    }
+}
+
+/* About Section Styling */
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 20px; /* Add padding for mobile */
+    background-color: var(--background-color); /* Adjust background color */
+}
+
+.about-content {
+    text-align: center;
+    max-width: 800px;
+    width: 100%; /* Make it full width for smaller screens */
+}
+
+.about-heading {
+    color: var(--text-color);
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.about-text {
+    color: var(--subtitle-color);
+    font-size: 18px;
+    line-height: 1.6;
+    margin-top: 0;
+    padding: 0 10px; /* Add padding for mobile readability */
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .about-heading {
+        font-size: 28px; /* Slightly reduce heading size on tablets and smaller */
+    }
+
+    .about-text {
+        font-size: 16px; /* Reduce text size for mobile devices */
+    }
+}
+
+@media (max-width: 480px) {
+    .about-heading {
+        font-size: 24px; /* Further reduce heading size on small mobile devices */
+    }
+
+    .about-text {
+        font-size: 14px; /* Reduce text size on smaller screens */
+    }
+}
+
+/* Projects */
+
+.projects {
+    padding: 50px 0;
+    margin-top: 50px;
+}
+
+.projects-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content for smaller screens */
+}
+
+.projects-heading {
+    color: var(--text-color);
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Responsive project cards */
+.projects-card {
+    background-color: var(--bg-card-color);
+    width: 100%; /* Make the card full width on small screens */
+    max-width: 900px; /* Keep a max width for larger screens */
+    padding: 30px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive images within the project card */
+.projects-images {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.project-image {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Add this to show the images when scrolled into view */
+.projects-card.scrolled .projects-images {
+    opacity: 1;
+    transform: translateY(0); /* Move the images to their original position */
+}
+
+/* Responsive text alignment */
+.projects-title {
+    color: var(--text-color);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.projects-desc {
+    color: var(--subtitle-color);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Responsive GitHub links */
+.projects-github {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+
+}
+
+.projects-card span {
+    display: flex;
+    align-items: center; /* Vertically aligns the text and link */
+    position: relative;
+    padding-bottom: 100px; /* Adds space for the images at the bottom */
+}
+
+.projects-link-wrapper {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    gap: 10px; /* Add space between the label and the link */
+}
+
+.projects-github-link {
+    font-size: 16px; /* Adjust the font size for consistency */
+    color: var(--text-color); /* Make sure the color is consistent with your theme */
+    text-decoration: none; /* Remove underline from the link */
+
+
+}
+
+.projects-github-link:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .projects-card {
+        width: 90%; /* Reduce width for smaller screens */
+        padding: 20px;
+    }
+
+    .projects-images {
+        flex-direction: column; /* Stack images vertically on smaller screens */
+        gap: 15px;
+        justify-content: center;
+        
+    }
+
+    .project-image {
+        width: 40%; /* Make images responsive and take full width */
+        max-width: 400px; /* Keep a max width */
+    }
+
+    .projects-title {
+        font-size: 20px; /* Smaller title for small screens */
+    }
+
+    .projects-desc {
+        font-size: 16px; /* Smaller description font size */
+    }
+
+    .projects-github-link {
+        font-size: 14px; /* Adjust link size */
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-card {
+        width: 100%; /* Full width for very small screens */
+        padding: 15px;
+    }
+
+    .project-image {
+        width: 50%; /* Full width for images */
+    }
+
+    .projects-title {
+        font-size: 18px;
+    }
+
+    .projects-desc {
+        font-size: 14px;
+    }
+
+    .projects-github {
+        font-size: 16px;
+    }
+
+    .projects-github-link {
+        font-size: 12px;
+    }
+}
+
+
+/* Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-evenly;
+    justify-content: center; /* Center the entire grid */
+    gap: 20px;
+    padding: 50px 0;
+    margin: 0 auto; /* Center the grid by using auto margins */
+    max-width: 1200px; /* Set a maximum width for the grid */
+}
+
+.skills-grid-heading {
+    color: var(--text-color);
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.skills-grid-card {
+    background-color: var(--bg-card-color);
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    margin: 30px auto; /* Ensure cards are centered */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease; /* Smooth transition for the glow effect */
+    border: var(--border);
+}
+
+.skills-grid-card:hover {
+    box-shadow: var(--box-shadow-hover); /* Adjust the glow color and intensity */
+
+}
+.skills-grid-icon {
+    color: var(--theme-icon-color);
+    font-size: 1.2rem;
+}
+
+.skills-grid-top-row {
+    display: flex;
+    gap: 10px;
+}
+
+.skills-grid-top-row h3 {
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.skills-grid-row {
+    display: grid;
+    grid-template-rows: auto;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.skills-grid-item {
+    background-color: var(--background-color);
+    border: var(--border);
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.skills-grid-item:hover {
+    background-color: var(--background-color);
+}
+
+@media (max-width: 600px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center; /* Ensure grid is centered */
+        padding: 20px;
+    }
+    
+}
+
+@media (max-width: 900px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center; /* Ensure grid is centered */
+        padding: 20px;
+    }
+    
+}
+
+/* Contacts */
+
+.contacts {
+    display: flex;
+}
+
+.contacts-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background-color: var(--navBar-color);
+    height: 450px;
+    width: 100%;
+    padding: 30px;
+    margin-bottom: 0;
+    border: var(--border);
+}
+
+.contacts-heading {
+    display: flex;
+    color: var(--text-color);
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.contacts-content {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column; 
+  
+}
+
+.contacts-content-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.contacts-content-column {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.contacts-content-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.contacts-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 30px;
+}
+
+.contacts-block {
+    display: flex;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+
+.contacts-icon {
+    color: rgb(114, 181, 38);
+    margin-right: 12px;
+    margin-top: 1px;
+}
+.contacts-info {
+    flex-direction: column;
+}
+
+.contacts h3 {
+    color: var(--text-color);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.contacts a {
+    text-decoration: none;
+    color: var(--light-text-color);
+}
+
+.contacts a:hover {
+    text-decoration: underline;
+}
+
+.contacts-input {
+    margin-right: 60px;
+}
+
+.contacts-input input {
+    padding: 5px;
+    font-size: 18px;
+    margin-right: 5px;
+    background-color: var(--background-color);
+    color: var(--light-text-color);
+    height: 60px;
+    width: 250px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 10px;
+    border: var(--border);
+
+}
+
+
+.contacts-input-subject input {
+    padding: 5px;
+    font-size: 18px;
+    margin-right: 5px;
+    background-color: var(--background-color);
+    color: var(--light-text-color);
+    height: 60px;
+    width: 520px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-right: 65px;
+    border: var(--border);
+}
+
+.contacts-input-message {
+    font-size: 18px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    height: 100px;
+    width: 520px;
+    border-radius: 10px;
+    padding: 12px;
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-right: 65px;
+    resize: none; /* Prevents resizing of the textarea */
+    border: var(--border);
+}
+
+.contacts-input-message::placeholder {
+    text-align: start; /* Left-align placeholder text */
+    vertical-align: top; /* Makes sure the placeholder is at the top */
+}
+
+.contacts-button {
+    align-self: flex-end;
+    margin-top: 10px;
+}
+
+.contacts-button button {
+    background-color: rgb(114, 181, 38);
+    color: white;
+    width: 150px;
+    height: 70px;
+    border-radius: 10px;
+    margin-right: 65px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+    /* Change the layout to row for contact block items */
+    .contacts-block {
+        display: flex;
+        flex-direction: row;
+        align-items: center; /* Align items horizontally */
+        margin-bottom: 10px; /* Add margin between rows */
+    }
+
+    /* Adjust icon size and margins for better spacing on mobile */
+    .contacts-icon {
+        margin-right: 10px;
+        font-size: 1.2rem; /* Reduce icon size */
+    }
+
+    .contacts-info {
+        font-size: .9rem;
+    }
+
+    .contacts-content-column {
+        flex-direction: row;
+    }
+    /* Make form fields stack in a column */
+    .contacts-content-row {
+        flex-direction: column;
+    }
+
+
+    /* Full width inputs for mobile */
+    .contacts-input input, .contacts-input-subject input, .contacts-input-message input {
+        width: 100%; /* Make input fields take full width on mobile */
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 15px; /* Add space between form fields */
+        margin-top: 10px;
+    }
+
+    /* Adjust button to take full width */
+    .contacts-button button {
+        width: 80%;
+    }
+
+    .contacts-button {
+        align-self: center;
+    }
+
+    .contacts-container {
+        height: fit-content;
+    }
+    
+    
+}
+
